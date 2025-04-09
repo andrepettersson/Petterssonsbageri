@@ -1,0 +1,10 @@
+# Ignorera config-filen med API-nyckeln
+Frontend/lib/helpers/config.js
+
+# Ignorera miljövariabler
+.env
+
+# Vanliga node_modules och byggmappar
+node_modules/
+dist/
+build/

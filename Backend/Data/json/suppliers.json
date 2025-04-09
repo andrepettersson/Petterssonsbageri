@@ -1,0 +1,18 @@
+[
+{
+    "SupplierId" : 1,
+    "FirstName" : "Lars",
+    "LastName" : "Jonsson",
+    "ContactPerson" : "Lars Jonsson",
+    "Email" : "Lars_knackefantast@wgmail.com",   
+    "Phone" : "078-88996655"
+},
+{
+    "SupplierId" : 2,
+    "FirstName" : "Malin",
+    "LastName" : "Bendersson",
+    "ContactPerson" : "Malin Bendersson",
+    "Email" : "Malin_bender@hotmail.com",   
+    "Phone" : "074-778895412"
+}
+]
