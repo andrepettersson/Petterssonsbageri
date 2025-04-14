@@ -1,0 +1,44 @@
+[
+    {
+        "CompanyName": "Skorpans Bageri AB",
+        "Phone" : "078-66552233",
+        "Email" : "skorpan@gmail.com",
+        "ContactPerson" : "Emil Persson",
+        "DeliveryAddress" : "Götevägen 18",
+        "InvoiceAddress" : "Helsingborgsgatan 6"
+    },
+    {
+        "CompanyName": "Tomelillas Bageri AB",
+        "Phone" : "078-11669853",
+        "Email" : "BagerietTomelilla@gmail.com",
+        "ContactPerson" : "Sven Svensson",
+        "DeliveryAddress" : "Marknadsgatan 12",
+        "InvoiceAddress" : "Ledvägen 6"
+    },
+    {
+        "CompanyName": "Jensen Bageri AB",
+        "Phone" : "075-46259823",
+        "Email" : "JensenB@telia.com",
+        "ContactPerson" : "Karl Karlsson",
+        "DeliveryAddress" : "Badavägen 8",
+        "InvoiceAddress" : "Vatttenvägen 9"
+    },
+    {
+        "CompanyName": "Malmberg Goda AB",
+        "Phone" : "075-5866965",
+        "Email" : "MalmB@telia.com",
+        "ContactPerson" : "Roger Malm",
+        "DeliveryAddress" : "Bödavägem 8",
+        "InvoiceAddress" : "ullaredsvägen 9"
+    },
+    {
+        "CompanyName": "Semlan AB",
+        "Phone" : "072-4512685",
+        "Email" : "Semlan@telia.com",
+        "ContactPerson" : "Sven Ingvars",
+        "DeliveryAddress" : "Dansbandsgatan 56",
+        "InvoiceAddress" : "Scenvägen 9"
+    }
+
+]
+
