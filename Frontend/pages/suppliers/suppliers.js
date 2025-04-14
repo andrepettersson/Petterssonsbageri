@@ -1,4 +1,4 @@
-import { get } from "../../lib/helpers/httpClient.js"
+import * as http from "../../lib/helpers/httpClient.js"
 
 const supplierList = document.querySelector('#supplier-list');
 
@@ -8,8 +8,8 @@ const initApp = () => {
 
 const loadSuppliers = async () => {
     try {
-        const response = await get('suppliers');
-        const suppliers = response.data;
+        const response = await http.get('suppliers');
+        const suppliers = response.suppliers;
 
         for (let supplier of suppliers) {
             generateSupplierHtml(supplier);
@@ -24,7 +24,7 @@ const generateSupplierHtml = (supplier) => {
     section.classList.add('card');
 
     const name = document.createElement('h3');
-    name.innerText = supplier.name;
+    name.innerText = supplier.contactPerson;
 
     const phone = document.createElement('p');
     phone.innerText = `Telefon: ${supplier.phone}`;

@@ -1,5 +1,4 @@
-import { get } from '../../lib/helpers/httpClient.js';
-import { post } from '../../lib/helpers/httpClient.js';
+import { get, post } from '../../lib/helpers/httpClient.js';
 
 const productList = document.querySelector('#products-list');
 
@@ -10,7 +9,7 @@ const initApp = () => {
 const loadProducts = async () => {
     try {
         const response = await get('products');
-        const products = response;
+        const products = response.data;
 
         for (let product of products) {
             generateProductHtml(product);

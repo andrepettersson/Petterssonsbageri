@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kunder || Petterssons Bageri</title>
+    <title>Lägg till en beställning</title>
     <link rel="stylesheet" href="../../assets/css/site.css">
     <link rel="stylesheet" href="../../assets/css/navigation.css">
-    <link rel="stylesheet" href="customers.css">
-    <script type="module" src="customers.js"></script>
+    <link rel="stylesheet" href="orders.css">
+    <script type="module" src="orders.js"></script>
 </head>
+
 <body>
 
     <nav class="main-nav">
@@ -20,8 +22,23 @@
             <li><a href="../orders/orders.html">Beställningar</a></li>
         </ul>
     </nav>
+    <section id="product-list" class="card-container"></section>
 
-    <h2>Kunder</h2>
-    <section id="customers-list"></section>
+    <h2>Lägg till beställning</h2>
+    <form id="order-form">
+        <label for="order-name">Namn</label>
+        <input type="text" id="order-name" required>
+
+        <label for="order-product">Produkt</label>
+        <select id="order-product" required></select>
+
+        <label for="order-quantity">Antal</label>
+        <input type="number" id="order-quantity" min="1" required>
+
+        <button type="submit">Beställ</button>
+    </form>
+
+    <p id="order-message"></p>
 </body>
+
 </html>
