@@ -1,9 +1,15 @@
-import { get } from '../../lib/helpers/httpClient.js';
+import { get, post } from '../../lib/helpers/httpClient.js';
 
 const customerList = document.querySelector('#customers-list');
+const form = document.querySelector('#customer-form');
+const nameInput = document.querySelector('#customer-name');
+const contactInput = document.querySelector('#customer-contact');
+const emailInput = document.querySelector('#customer-email');
+const phoneInput = document.querySelector('#customer-phone');
 
 const initApp = () => {
   loadCustomers();
+  form.addEventListener('submit', handleSubmit);
 };
 
 const loadCustomers = async () => {
@@ -11,6 +17,7 @@ const loadCustomers = async () => {
     const response = await get('customer');
     const customers = response.data;
 
+    customerList.innerHTML = '';
     for (let customer of customers) {
       generateCustomerHtml(customer);
     }
@@ -41,6 +48,25 @@ const generateCustomerHtml = (customer) => {
   section.appendChild(phone);
 
   customerList.appendChild(section);
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const newCustomer = {
+    companyName: nameInput.value,
+    contactPerson: contactInput.value,
+    email: emailInput.value,
+    phone: phoneInput.value
+  };
+
+  try {
+    await post('customer', newCustomer);
+    form.reset();
+    loadCustomers();
+  } catch (error) {
+    console.error('Kunde inte lägga till kund:', error);
+  }
 };
 
 document.addEventListener('DOMContentLoaded', initApp);

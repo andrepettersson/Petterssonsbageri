@@ -1,3 +1,4 @@
+using Backend.ViewModels.Supplier;
 using bageri.api.Data;
 using bageri.api.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -54,5 +55,29 @@ public class SuppliersController(DataContext context) : ControllerBase
 
         return Ok(new { success = true, supplier });
     }
+
+    [HttpPost]
+    public async Task<ActionResult> AddSupplier(SupplierPostViewModel model)
+    {
+        try
+        {
+            var supplier = new Supplier
+            {
+                CompanyName = model.CompanyName,
+                ContactPerson = model.ContactPerson,
+                Email = model.Email,
+                Phone = model.Phone
+            };
+
+            await _context.Suppliers.AddAsync(supplier);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { success = true, supplier });
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, new { success = false, message = "Kunde inte lägga till leverantör" });
+        }
     }
 
+}

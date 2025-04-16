@@ -2,9 +2,11 @@ import { get, post } from '../../lib/helpers/httpClient.js';
 
 const form = document.querySelector('#order-form');
 const nameInput = document.querySelector('#order-name');
+const contactInput = document.querySelector('#order-contact');
+const emailInput = document.querySelector('#order-email');
+const phoneInput = document.querySelector('#order-phone');
 const productSelect = document.querySelector('#order-product');
 const quantityInput = document.querySelector('#order-quantity');
-const messageBox = document.querySelector('#order-message');
 
 const initApp = () => {
     loadProducts();
@@ -18,7 +20,8 @@ const loadProducts = async () => {
     products.forEach(product => {
         const option = document.createElement('option');
         option.value = product.itemNumber;
-        option.textContent = product.name;
+        option.textContent = `${product.name} ${product.price} kr`;
+        option.dataset.price = product.price;
         productSelect.appendChild(option);
     });
 };
@@ -26,18 +29,41 @@ const loadProducts = async () => {
 const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const order = {
-        customerName: nameInput.value,
-        productId: parseInt(productSelect.value),
-        quantity: parseInt(quantityInput.value)
-    };
+    const name = nameInput.value;
+    const contact = contactInput.value;
+    const email = emailInput.value;
+    const phone = phoneInput.value;
+    const productId = parseInt(productSelect.value);
+    const quantity = parseInt(quantityInput.value);
+    const selectedOption = productSelect.options[productSelect.selectedIndex];
+    const price = parseFloat(selectedOption.dataset.price);
 
     try {
+
+        const customerResponse = await post('customer', {
+            companyName: name,
+            contactPerson: contact,
+            email: email,
+            phone: phone
+        });
+        const customerId = customerResponse.data.id;
+
+
+        const order = {
+            customerId,
+            orderItems: [
+                {
+                    productId,
+                    quantity,
+                    price
+                }
+            ]
+        };
+
         await post('order', order);
-        messageBox.textContent = '✅ Beställning skickad!';
         form.reset();
-    } catch {
-        messageBox.textContent = 'Något gick fel.';
+    } catch (error) {
+        console.error('Fel vid beställning:', error);
     }
 };
 
